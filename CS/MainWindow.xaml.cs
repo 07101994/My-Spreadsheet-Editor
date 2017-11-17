@@ -82,9 +82,12 @@ namespace MySpreadsheetEditor
 		/// <param name="e"></param>
 		private void RibbonWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            this.spreadsheetControl.Commands.FileClose.Execute(null);
-            if (Application.Current.ShutdownMode != ShutdownMode.OnExplicitShutdown)
-                e.Cancel = true;
+			spreadsheetControl.Dispose();
+			spreadsheetRibbon.Dispose();
+			System.Windows.Application.Current.Shutdown();
+			//this.spreadsheetControl.Commands.FileClose.Execute(null);
+   //         if (Application.Current.ShutdownMode != ShutdownMode.OnExplicitShutdown)
+   //             e.Cancel = true;
         }
     }
 }
